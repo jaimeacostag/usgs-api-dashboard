@@ -1,5 +1,3 @@
-# usgs-api-dashboard
-
 # 🎣 NJ Stream Conditions Dashboard (USGS API)
 
 This project is a personal data analytics project built around a hobby of mine: **fly fishing**. Before heading out, I regularly check river conditions such as streamflow and gauge height to determine whether conditions are safe and fishable. This dashboard simplifies that process by pulling **near real-time data from the USGS Water Services API** and presenting current conditions for select rivers in New Jersey.
@@ -44,7 +42,7 @@ The focus is on clean data ingestion, repeatable transformations, and clear visu
 
 This project serves two goals:
 
-1. **Personal Use** – Quickly assess stream conditions before fly fishing trips  
+1. **Personal Use** – Quickly assess stream conditions before fly fishing outings  
 2. **Portfolio Demonstration** – Showcase practical BI skills using a real-world public API
 
 The project mirrors common operational dashboards used in enterprise settings: current-state monitoring, standardized transformations, and refreshable data models.
