@@ -17,13 +17,40 @@ The focus is on clean data ingestion, repeatable transformations, and clear visu
 ## 🛠️ Tools & Technologies
 
 - **Data Source:** USGS Water Services API  
-- **ETL / Data Transformation:** Power Query (M)  
+- **ETL / Data Transformation:** Power Query  
 - **Data Modeling & Visualization:** Power BI  
 - **Concepts Demonstrated:**
   - API-based data ingestion
   - Power Query transformations and normalization
   - Time-series data handling
   - BI modeling and dashboard design
+
+---
+
+## 🧱 Dashboard Build Process
+
+This section outlines the high-level steps used to build the dashboard, focusing on reproducible and industry-standard BI practices.
+
+### 1. Data Ingestion
+- Connected to the USGS Water Services API using Power Query
+- Parsed JSON responses into tabular format
+
+![Power Query ETL](docs/screenshots/powerquery_etl.png)
+
+### 2. Data Transformation (Power Query)
+- Standardized timestamp formats
+- Renamed and normalized fields for consistency
+- Filtered to the most recent observations per river
+- Applied basic data quality checks (null handling, type validation)
+
+### 3. Data Modeling
+- Structured the dataset for efficient reporting
+- Ensured consistent grain across rivers and measurements
+- Optimized the model for refresh and performance
+
+### 4. Dashboard Design (Power BI)
+- Designed visuals for quick “at-a-glance” assessment
+- Used scales and formatting across rivers
 
 ---
 
