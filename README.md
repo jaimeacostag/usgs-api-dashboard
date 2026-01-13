@@ -35,7 +35,7 @@ This section outlines the high-level steps used to build the dashboard, focusing
 - Connected to the USGS Water Services API using Power Query
 - Parsed JSON responses into tabular format
 
->![Power Query ETL](docs/screenshots/powerquery_etl.png)
+  ![Power Query ETL](docs/screenshots/powerquery_etl.png)
 
 ### 2. Data Transformation (Power Query)
 - Standardized timestamp formats
