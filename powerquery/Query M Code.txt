@@ -1,0 +1,21 @@
+let
+    Source = Json.Document(Web.Contents("https://api.waterdata.usgs.gov/ogcapi/v0/collections/latest-continuous/items?f=json&monitoring_location_id=https://api.waterdata.usgs.gov/ogcapi/v0/collections/latest-continuous/items?f=json&monitoring_location_id=USGS-01396582")),
+    #"Converted to Table" = Table.FromRecords({Source}),
+    #"Changed Type" = Table.TransformColumnTypes(#"Converted to Table",{{"type", type text}, {"features", type any}, {"numberReturned", Int64.Type}, {"links", type any}, {"timeStamp", type datetime}}),
+    #"Expanded links" = Table.ExpandListColumn(#"Changed Type", "links"),
+    #"Expanded links1" = Table.ExpandRecordColumn(#"Expanded links", "links", {"type", "rel", "title", "href"}, {"links.type", "links.rel", "links.title", "links.href"}),
+    features = #"Expanded links1"{3}[features],Q
+    #"Converted to Table1" = Table.FromList(features, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+    #"Expanded Column1" = Table.ExpandRecordColumn(#"Converted to Table1", "Column1", {"type", "properties", "id", "geometry"}, {"Column1.type", "Column1.properties", "Column1.id", "Column1.geometry"}),
+    #"Expanded Column1.properties" = Table.ExpandRecordColumn(#"Expanded Column1", "Column1.properties", {"monitoring_location_id", "statistic_id", "time_series_id", "value", "approval_status", "last_modified", "parameter_code", "time", "unit_of_measure", "qualifier"}, {"Column1.properties.monitoring_location_id", "Column1.properties.statistic_id", "Column1.properties.time_series_id", "Column1.properties.value", "Column1.properties.approval_status", "Column1.properties.last_modified", "Column1.properties.parameter_code", "Column1.properties.time", "Column1.properties.unit_of_measure", "Column1.properties.qualifier"}),
+    #"Removed Columns" = Table.RemoveColumns(#"Expanded Column1.properties",{"Column1.type", "Column1.properties.statistic_id", "Column1.properties.time_series_id", "Column1.properties.approval_status", "Column1.properties.last_modified", "Column1.properties.parameter_code", "Column1.properties.qualifier", "Column1.id", "Column1.geometry"}),
+    #"Reordered Columns" = Table.ReorderColumns(#"Removed Columns",{"Column1.properties.monitoring_location_id", "Column1.properties.value", "Column1.properties.unit_of_measure", "Column1.properties.time"}),
+    #"Renamed Columns" = Table.RenameColumns(#"Reordered Columns",{{"Column1.properties.monitoring_location_id", "Location ID"}, {"Column1.properties.value", "Value"}, {"Column1.properties.unit_of_measure", "UoM"}, {"Column1.properties.time", "Date"}}),
+    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns",{{"Date", type datetimezone}}),
+    #"Added Custom" = Table.AddColumn(#"Changed Type1", "Time", each Time.From([Date])),
+    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom",{{"Time", type time}, {"Date", type date}}),
+    #"Pivoted Column" = Table.Pivot(#"Changed Type2", List.Distinct(#"Changed Type2"[UoM]), "UoM", "Value"),
+    #"Changed Type3" = Table.TransformColumnTypes(#"Pivoted Column",{{"ft", type number}, {"ft^3/s", type number}, {"degF", type number}}),
+    #"Renamed Columns1" = Table.RenameColumns(#"Changed Type3",{{"ft", "Gage Height"}, {"ft^3/s", "Discharge"}, {"degF", "Air Temp F"}})
+in
+    #"Renamed Columns1"
