@@ -18,8 +18,8 @@ The focus is on clean data ingestion, repeatable transformations, and clear visu
 
 This project serves two goals:
 
-1. **Personal Use** – Quickly assess stream conditions before fly fishing outings  
-2. **Portfolio Demonstration** – Showcase practical BI skills using a real-world public API
+1. **Personal Use** – Quickly assess stream conditions before fly fishing outings.  
+2. **Portfolio Demonstration** – Showcase practical BI skills using a real-world public API.
 
 The project mirrors common operational dashboards used in enterprise settings: current-state monitoring, standardized transformations, and refreshable data models.
 
