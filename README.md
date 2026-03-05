@@ -1,10 +1,10 @@
-# 🎣 NJ Stream Conditions Dashboard (USGS API)
+#  NJ Stream Conditions Dashboard (USGS API)
 
 This project is a personal data analytics project built around a hobby of mine: **fly fishing**. Before heading out, I regularly check stream conditions such as streamflow and gauge height to determine whether conditions are safe and fishable. This dashboard simplifies that process by pulling **near real-time data from the USGS Water Services API** and presenting current conditions for select streams in New Jersey.
 
 ---
 
-## 📌 Project Overview
+##  Project Overview
 
 The dashboard displays current stream conditions for **three New Jersey streams** using publicly available USGS data. The project demonstrates a simple, end-to-end BI workflow:
 
@@ -14,7 +14,7 @@ The focus is on clean data ingestion, repeatable transformations, and clear visu
 
 ---
 
-## 🎯 Purpose of the Project
+##  Purpose of the Project
 
 This project serves two goals:
 
@@ -25,7 +25,7 @@ The project mirrors common operational dashboards used in enterprise settings: c
 
 ---
 
-## 🛠️ Tools & Technologies
+##  Tools & Technologies
 
 - **Data Source:** USGS Water Services API  
 - **ETL / Data Transformation:** Power Query  
@@ -37,7 +37,7 @@ The project mirrors common operational dashboards used in enterprise settings: c
 
 ---
 
-## 🧱 Dashboard Build Process
+##  Dashboard Build Process
 
 This section outlines the high-level steps used to build the dashboard.
 
@@ -60,7 +60,7 @@ This section outlines the high-level steps used to build the dashboard.
 
 ---
 
-## 📊 Dashboard Features
+##  Dashboard Features
 
 - Current streamflow and gauge height by river
 - Timestamp of the most recent USGS reading
@@ -71,7 +71,7 @@ This section outlines the high-level steps used to build the dashboard.
 
 
 
-## 🗂️ Repository Structure
+##  Repository Structure
 
 ```text
 /
